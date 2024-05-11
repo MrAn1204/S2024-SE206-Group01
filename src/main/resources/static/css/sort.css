@@ -1,0 +1,81 @@
+/* Header Notification */
+.sort-container {
+    position: absolute;
+    top: 90%;
+    right: 10px;
+    width: 250px;
+    background-color: var(--white-color);
+    border: 1px solid #D3D3D3;
+    border-radius: 2%;
+    cursor: default;
+    transform-origin: calc(100% - 20px) top;
+    animation:headerNotifyGrowth ease-in 0.2s;
+    will-change: opacity, transform;    /* Tối ưu chuyển động cho animation */
+    /* display: none; */
+}
+
+.sort-container::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 5px;
+    top: -10px;
+    width: 120px;
+    height: 20px;
+}
+
+@keyframes headerNotifyGrowth {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.sort-list {
+    padding-left: 0;
+}
+
+.sort-items {
+    list-style: none;
+    display: flex;
+}
+
+.sort-items:hover {
+    background-color: #f1f1f1;
+}
+
+.sort-items-viewed {
+    background-color: rgb(218, 218, 218, 0.3);
+}
+
+.sort-link {
+    display: flex;
+    padding: 12px;
+    width: 100%;
+    text-decoration: none;
+    
+}
+
+.sort-info {
+    margin-left: 12px;
+}
+
+.sort-name {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--black-color);
+    font-weight: 500;
+    line-height: 2rem;
+}
+
+.sort-button:hover .sort-container {
+    display: block;
+}
+
+.sort-container.show-container {
+    display: block;
+  }

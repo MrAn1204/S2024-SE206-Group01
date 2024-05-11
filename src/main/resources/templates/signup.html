@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='UTF-8'>
+    <title>Page Title</title>
+    <link rel='stylesheet' th:href='@{/css/style.css}'>
+    <script>
+        window.onload = function() {
+            let backButton = document.getElementById("backButton");
+            let createButton = document.getElementById("createButton");
+            
+            backButton.addEventListener("click", function() {
+                history.back();
+            });
+        };
+    </script>
+</head>
+<body class="container">
+    <div id="authenContainer">
+        <form class="formContainer" th:action="'/signup'" method="post" th:object="${user}">
+            <p class="formTitle">Create your account</p>
+            <input type="text" placeholder="Username" class="input" th:field="*{username}">
+            <input type="email" placeholder="Email" class="input" th:field="*{email}">
+            <input type="password" placeholder="Password" class="input" th:field="*{password}">
+            <input type="password" placeholder="Confirm Password" class="input">
+            <input type="text" placeholder="First name" class="input" th:field="*{fname}">
+            <input type="text" placeholder="Last name" class="input" th:field="*{lname}">
+            <input type="text" placeholder="Address" class="input" th:field="*{address}">
+            <input type="text" placeholder="Phone number" class="input" th:field="*{phone}">
+            <div id="birthdayContainer">
+                <p class="birthdayText">Birth</p>
+                <input type="date" class="birthdayText" th:field="*{dob}">
+            </div>
+            <div id="signupButtonsContainer">
+                <button type="button" id="backButton" class="signinOption">Back</button>
+                <button type="submit" id="createButton" class="signinOption">Create</button>
+            </div>
+        </form>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <link rel='stylesheet' href='../static/css/style.css'>
+    <script>
+        window.onload = function() {
+            let editProfileButton = document.getElementById("editProfileButton");
+            let deleteAccountButton = document.getElementById("deleteAccountButton");
+            let infoContentElements = document.querySelectorAll(
+                "#userFname, #userLname, #userDob, #userPhone, #userEmail, #userAddress"
+            );
+            let deletePopup = document.querySelector(".deletePopup");
+            let closePopup = document.querySelectorAll(".closePopup");
+            let isEditing = false;
+            
+            editProfileButton.addEventListener("click", function(event) {
+                if (!isEditing) {
+                    // Change button text to "Save"
+                    editProfileButton.textContent = "Save";
+                    editProfileButton.type = "submit";
+                    // Prevent form submission
+                    event.preventDefault();
+                    // Make info content editable
+                    infoContentElements.forEach(function(element) {
+                        element.disabled = false;
+                        element.classList.add("editable");
+                    });
+                    isEditing = true;
+                } else {
+                    // Change button text back to "Edit profile"
+                    editProfileButton.textContent = "Edit profile";
+                    // Make info content non-editable
+                    infoContentElements.forEach(function(element) {
+                        element.disabled = true;
+                        element.classList.remove("editable");
+                    });
+                    isEditing = false;
+                }
+            });
+
+            deleteAccountButton.addEventListener("click", function () {
+                console.log("a");
+                deletePopup.classList.add("show");
+            });
+
+            closePopup.forEach(function(element) {
+                element.addEventListener("click", function () {
+                    deletePopup.classList.remove("show");
+                });
+            })
+        };
+    </script>
+</head>
+<body class="container">
+    <form id="profileContainer">
+        <p class="formTitle">My account</p>
+        <div class="infoLine">
+            <label for="userId" class="infoLabel">ID</label>
+            <input disabled type="text" id="userId" class="infoContent" value="0">
+        </div>
+        <div class="infoLine">
+            <label for="userFname" class="infoLabel">First name</label>
+            <input disabled type="text" id="userFname" class="infoContent" value="Admin">
+        </div>
+        <div class="infoLine">
+            <label for="userLname" class="infoLabel">Last name</label>
+            <input disabled type="text" id="userLname" class="infoContent" value="Randomname">
+        </div>
+        <div class="infoLine">
+            <label for="userDob" class="infoLabel">Date of Birth</label>
+            <input disabled type="text" id="userDob" class="infoContent" value="01/01/2000">
+        </div>
+        <div class="infoLine">
+            <label for="userPhone" class="infoLabel">Phone number</label>
+            <input disabled type="text" id="userPhone" class="infoContent" value="0123456789">
+        </div>
+        <div class="infoLine">
+            <label for="userEmail" class="infoLabel">Email</label>
+            <input disabled type="text" id="userEmail" class="infoContent" value="abc@xyz.com">
+        </div>
+        <div class="infoLine">
+            <label for="userAddress" class="infoLabel">Address</label>
+            <input disabled type="text" id="userAddress" class="infoContent" value="1234 QWER Street">
+        </div>
+        <div id="editProfileContainter">
+            <button type="button" id="editProfileButton">Edit profile</button>
+            <button type="button" id="deleteAccountButton">Delete account</button>
+            <a  href="logout"></a>
+        </div>
+    </form>
+
+    <div class="deletePopup">
+        <div class="deletePopupContent">
+            <img src="../static/images/warning.png" alt="warning" width="120" height="120">
+            <h1 id="deleteTitle">Delete Account</h1>
+            <p id="deleteDesc">This will delete your account from our system. Are you really sure?</p>
+            <div id="deleteOptionsContainer">
+                <button class="closePopup" id="confirmDeleteAccount">Delete Account</button>
+                <button class="closePopup" id="cancelmDeleteAccount">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
