@@ -14,6 +14,7 @@
 - Tran Thi Theu - Testing
 
 ## Database
+Go to [phpMyAdmin](https://www.phpmyadmin.co) to see database details
 - Server: sql6.freemysqlhosting.net
 - Name: sql6705900
 - Username: sql6705900
