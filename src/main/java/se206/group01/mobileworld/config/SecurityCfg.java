@@ -22,7 +22,9 @@ public class SecurityCfg {
                 .csrf(csrf -> csrf.disable())
                 .userDetailsService(uds())
                 .authorizeHttpRequests(req -> req
-                        .anyRequest().permitAll())
+                        .requestMatchers("/css/**", "/images/**", "/fonts/**").permitAll()
+                        .requestMatchers("/", "signup").permitAll()
+                        .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
