@@ -27,7 +27,7 @@ public class HomeController {
     public String showProductsByType(@PathVariable String productType, Model model) {
         List<Product> productList = productRepository.findByProductType(productType);
         model.addAttribute("product", productList);
-        return "homepage";
+        return "producttype";
     }
 }
 
