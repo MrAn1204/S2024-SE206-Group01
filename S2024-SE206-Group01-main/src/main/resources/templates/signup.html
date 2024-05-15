@@ -16,27 +16,46 @@
     </script>
 </head>
 <body class="container">
-    <div id="authenContainer">
-        <form class="formContainer" th:action="'/signup'" method="post" th:object="${user}">
-            <p class="formTitle">Create your account</p>
-            <input type="text" placeholder="Username" class="input" th:field="*{username}">
-            <input type="email" placeholder="Email" class="input" th:field="*{email}">
-            <input type="password" placeholder="Password" class="input" th:field="*{password}">
-            <input type="password" placeholder="Confirm Password" class="input">
-            <input type="text" placeholder="First name" class="input" th:field="*{fname}">
-            <input type="text" placeholder="Last name" class="input" th:field="*{lname}">
-            <input type="text" placeholder="Address" class="input" th:field="*{address}">
-            <input type="text" placeholder="Phone number" class="input" th:field="*{phone}">
-            <div id="birthdayContainer">
-                <p class="birthdayText">Birth</p>
-                <input type="date" class="birthdayText" th:field="*{dob}">
-            </div>
-            <div id="signupButtonsContainer">
-                <button type="button" id="backButton" class="signinOption">Back</button>
-                <button type="submit" id="createButton" class="signinOption">Create</button>
-            </div>
-        </form>
-        
-    </div>
+<div id="authenContainer">
+    <form class="formContainer" th:action="'/signup'" method="post" th:object="${userTemplate}">
+        <p class="formTitle">Create your account</p>
+
+        <input type="text" placeholder="Username" class="input" th:field="*{username}">
+        <div th:if="${#fields.hasErrors('username')}" th:errorclass="error" th:errors="*{username}" />
+
+        <input type="email" placeholder="Email" class="input" th:field="*{email}">
+        <div th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}" />
+
+        <input type="password" placeholder="Password" class="input" th:field="*{password}">
+        <div th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{password}" />
+
+        <input type="password" placeholder="Confirm Password" class="input" th:field="*{confirmPassword}">
+        <div th:if="${#fields.hasErrors('password')}" th:errorclass="error" th:errors="*{confirmPassword}" />
+
+        <input type="text" placeholder="First name" class="input" th:field="*{fname}">
+        <div th:if="${#fields.hasErrors('fname')}" th:errorclass="error" th:errors="*{fname}" />
+
+        <input type="text" placeholder="Last name" class="input" th:field="*{lname}">
+        <div th:if="${#fields.hasErrors('lname')}" th:errorclass="error" th:errors="*{lname}" />
+
+        <input type="text" placeholder="Address" class="input" th:field="*{address}">
+        <div th:if="${#fields.hasErrors('address')}" th:errorclass="error" th:errors="*{address}" />
+
+        <input type="text" placeholder="Phone number" class="input" th:field="*{phone}">
+        <div th:if="${#fields.hasErrors('phone')}" th:errorclass="error" th:errors="*{phone}" />
+
+        <div id="birthdayContainer">
+            <p class="birthdayText">Birth</p>
+            <input type="date" class="birthdayText" th:field="*{dob}">
+        </div>
+        <div th:if="${#fields.hasErrors('dob')}" th:errorclass="error" th:errors="*{dob}" />
+
+        <div id="signupButtonsContainer">
+            <button type="button" id="backButton" class="signinOption">Back</button>
+            <button type="submit" id="createButton" class="signinOption">Create</button>
+        </div>
+    </form>
+
+</div>
 </body>
 </html>

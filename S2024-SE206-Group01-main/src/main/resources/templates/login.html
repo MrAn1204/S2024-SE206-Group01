@@ -6,19 +6,24 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body class="container">
-    <div id="authenContainer">
-        <form class="formContainer" th:action="'/login'" method="post" th:object="${user}">
-            <p class="formTitle">Sign in to get started</p>
-            <input type="text" placeholder="Username" class="input" th:field="*{username}">
-            <input type="password" placeholder="Password" class="input" th:field="*{password}">
-            <button type="submit" id="loginButton">Sign in</button>
-            <a id="signupText" href="/signup">Create account</a>
-        </form>
-        
-        <div id="loginButtonsContainer">
-            <button disabled type="button" class="loginAlternative">Sign in with Google (Coming soon)</button>
-            <button disabled type="button" class="loginAlternative">Sign in with QR Code (Coming soon)</button>
-        </div>
+<div id="authenContainer">
+    <form class="formContainer" th:action="'/login-validate'" method="post" th:object="${userTemplate}">
+        <p class="formTitle">Sign in to get started</p>
+
+        <input type="text" placeholder="Username" class="input" th:field="*{username}">
+
+        <input type="password" placeholder="Password" class="input" th:field="*{password}">
+
+        <p class="error" th:if="${param.failed}">Invalid credentials!</p>
+
+        <button type="submit" id="loginButton">Sign in</button>
+        <a id="signupText" href="/signup">Create account</a>
+    </form>
+
+    <div id="loginButtonsContainer">
+        <button disabled type="button" class="loginAlternative">Sign in with Google (Coming soon)</button>
+        <button disabled type="button" class="loginAlternative">Sign in with QR Code (Coming soon)</button>
     </div>
+</div>
 </body>
 </html>

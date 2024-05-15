@@ -143,21 +143,21 @@
     <div>
         <div class="listProduct">
             <table>
-
-                <tr th:each ="product: ${productList}">
+                <tr th:each="product : ${productList}">
                     <td>
-                        <a th:href = "'/product/' + ${product.productId}" th:src = "${product.productImage}" width="100" height="100"></a>
+                        <a th:href="'/product/' + ${product.id}">
+                            <img th:src="${product.productImage}" width="100" alt="Product Image">
+                        </a>
                     </td>
                     <td>
-                        <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productName}"></a>
-                        <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productPrice}"></a>
+                        <a th:href="'/product/' + ${product.id}" th:text="${product.productName + ' - ' + product.productPrice}"></a>
                     </td>
                     <td>
                         <button type="button">Buy</button>
                     </td>
                 </tr>
-
             </table>
+
         </div>
     </div>
 </div>
