@@ -18,7 +18,16 @@
     <!--font-->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap">
-
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    let priceElements = document.querySelectorAll('.price');
+    priceElements.forEach((el) => {
+        let price = el.textContent.replace('đ', '').trim();
+        price = parseInt(price, 10);
+        el.textContent = price.toLocaleString('vi-VN') + 'đ';
+    });
+});
+    </script>
 </head>
 <body>
 <div class="all">
@@ -69,55 +78,69 @@
 </div>
 
 <div class="main-content">
-    <div style="display: flex; flex-direction: row;" >
-        <div class="product-name">
-            <h1 th:text="${product.productName}"/>
-        </div>
-
+    <div style="display: flex; flex-direction: row;">
+        <!-- Cột bên trái chứa hình ảnh sản phẩm -->
         <div class="product-image">
-<!--            <img th:src="${product.product_image}"/>-->
-            <img src="../static/images/iphone-15.webp" width="300" >
+            <img src="../static/images/iphone-15.webp" width="300">
         </div>
 
-        <div class="product-choice">
-            <p class="price" th:text="${product.productPrice}"></p>
-            <p>Select version to see price</p>
-            <p>Color</p>
-        </div>
+        <!-- Cột bên phải chứa thông tin về sản phẩm -->
+        <div>
+            <div class="product-name">
+                <h1 th:text="${product.productName}">iphone 15 pro max</h1>
+            </div>
 
-        <div class="product-color">
-            <button class="button-color" th:text="product.productColor"/>
-        </div>
-        <div class="product-memory">
-            <p>Memory</p>
-            <!--        <select>-->
-            <!--            <option>8+128GB</option>-->
-            <!--            <option>8+256GB</option>-->
-            <!--            <option>12+512GB</option>-->
-            <!--        </select>-->
-            <button class="button-memory" th:text="${product.productMemory}"/>
-        </div>
-<!--        <p>Memory</p>-->
-<!--&lt;!&ndash;        <select>&ndash;&gt;-->
-<!--&lt;!&ndash;            <option>8+128GB</option>&ndash;&gt;-->
-<!--&lt;!&ndash;            <option>8+256GB</option>&ndash;&gt;-->
-<!--&lt;!&ndash;            <option>12+512GB</option>&ndash;&gt;-->
-<!--&lt;!&ndash;        </select>&ndash;&gt;-->
-<!--            <button class="button-memory" th:text="${product.productMemory}"/>-->
-        <div class="button">
-            <button class="button-cart" th:href="'/cart'">Add to cart</button>
-            <button class="button-purchase" th:href="'/cart'">Purchase</button>
+            <div class="product-choice">
+                <p class="price" th:text="${product.productPrice}">5000000</p>
+                <p>Select version to see price</p>
+                <p>Color</p>
+            </div>
+
+            <div class="product-color">
+                <button class="button-color" th:text="product.productColor"/>
+            </div>
+
+            <div class="product-memory">
+                <p>Memory</p>
+                <button class="button-memory" th:text="${product.productMemory}"/>
+            </div>
+
+            <div class="button">
+                <button class="button-cart" onclick="location.href = '/type/phone';" >Add to cart</button>
+                <button class="button-purchase" onclick="location.href = '/cart'">Purchase</button>
+            </div>
         </div>
     </div>
-
 </div>
-<div>
-    <h2>Detailed Information</h2>
+<div >
+    <h2 class="detail-info">Detailed Information</h2>
     <p class = "description" th:text="${product.productDescription}"/>
 </div>
 <div class="specs">
-    <h2>Specifications</h2>
-    <!-- Specifications details here -->
+
+    <h2 class="specifications">Specifications</h2>
+    <table class="table-specification">
+        <tr class="name-specs">
+            <th>Screen</th>
+            <td th:text ="${product.productScreen}">abc</td>
+        </tr>
+        <tr class="name-specs">
+            <th>Operating System</th>
+            <td th:text ="${product.productOs}">abc</td>
+        </tr>
+        <tr class="name-specs">
+            <th>Rear Camera</th>
+            <td th:text ="${product.productRearCamera}">abc</td>
+        </tr>
+        <tr class="name-specs">
+            <th>Front Camera</th>
+            <td th:text ="${product.productFrontCamera}">sdcn</td>
+        </tr>
+        <tr class="name-specs">
+            <th>CPU</th>
+            <td th:text ="${product.productCpu}">abc</td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

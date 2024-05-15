@@ -1,3 +1,109 @@
+:root {
+    --primary-color: #fff;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;    /* HACK */
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+.main-content {
+    font-size: 160%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+}
+
+.product-image {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.product-details {
+    flex: 2;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-name h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.product-choice .price {
+    color: #e44d26;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-choice p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.product-color, .product-memory {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.button-color, .button-memory {
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.button-cart, .button-purchase {
+    padding: 15px 25px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.button-cart {
+    background-color: #ff9500;
+    color: white;
+}
+
+.button-purchase {
+    background-color: #000;
+    color: white;
+}
+
+/* Định dạng giá tiền với dấu chấm */
+.price::after {
+    content: attr(data-price);
+    display: block;
+}
+
+/*
 .main-content {
     display: flex;
     flex-direction: column;
@@ -63,4 +169,51 @@
 
 .specs h2 {
     margin-top: 30px;
+}
+*/
+. detail-info {
+    padding: 20px;
+    font-size: 180%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+. specification {
+    padding: 20px;
+    font-size: 180%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.specifications {
+    padding: 20px;
+    font-size: 200%;
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.table-specification {
+    font-size: 160%;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-specification th,
+.table-specification td {
+    padding: 20px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-specification th {
+    text-align: left;
+    background-color: #f2f2f2;
+    width: 30%;
+}
+
+.table-specification td {
+    text-align: right;
+    width: 70%;
 }
