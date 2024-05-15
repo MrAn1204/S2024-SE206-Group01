@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <title> Mobile World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/popup.css">
+    <link rel="stylesheet" href="../static/css/sort.css">
+    <link rel="stylesheet" href="../static/css/card.css">
+    <link rel="stylesheet" href="../static/css/detail.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="../static/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+    <!--font-->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap">
+
+</head>
+<body>
+<div class="all">
+    <!-- Header Begin -->
+    <header class="header">
+        <div class="grid">
+            <nav class="header__navbar">
+                <ul class="header__navbar-list">
+                    <img src="../static/images/logo.png" class="logo" alt="Mobile World">
+                </ul>
+
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item"> Phone</li>
+                    <li class="header__navbar-item"> Tablet</li>
+                    <li class="header__navbar-item"> Laptop</li>
+                    <li class="header__navbar-item"> TV</li>
+                    <li class="header__navbar-item"> Accessories</li>
+                </ul>
+
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item header__navbar-item--has-notify">
+                        <a href="" class="authentication">
+                            Sign in <span class="slash-space">/</span>
+                        </a>
+                        <a href="" class="authentication">
+                            Sign up
+                        </a>
+                    </li>
+                    <li class="header__navbar-item">
+                        <a href="" class="icons">
+                            <a href="" class="header_navbar-icon-link" id="search-icon-link">
+                                <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
+                            </a>
+
+                            <a href="" class="header_navbar-icon-link">
+                                <i class="header_navbar-icon fa-solid fa-cart-arrow-down"></i>
+                            </a>
+
+                            <a href="" class="header_navbar-icon-link">
+                                <i class="header_navbar-icon fa-regular fa-user"></i>
+                            </a>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<div class="main-content">
+    <div style="display: flex; flex-direction: row;" >
+        <div class="product-name">
+            <h1 th:text="${product.productName}"/>
+        </div>
+
+        <div class="product-image">
+<!--            <img th:src="${product.product_image}"/>-->
+            <img src="../static/images/iphone-15.webp" width="300" >
+        </div>
+
+        <div class="product-choice">
+            <p class="price" th:text="${product.productPrice}"></p>
+            <p>Select version to see price</p>
+            <p>Color</p>
+        </div>
+
+        <div class="product-color">
+            <button class="button-color" th:text="product.productColor"/>
+        </div>
+        <div class="product-memory">
+            <p>Memory</p>
+            <!--        <select>-->
+            <!--            <option>8+128GB</option>-->
+            <!--            <option>8+256GB</option>-->
+            <!--            <option>12+512GB</option>-->
+            <!--        </select>-->
+            <button class="button-memory" th:text="${product.productMemory}"/>
+        </div>
+<!--        <p>Memory</p>-->
+<!--&lt;!&ndash;        <select>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option>8+128GB</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option>8+256GB</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option>12+512GB</option>&ndash;&gt;-->
+<!--&lt;!&ndash;        </select>&ndash;&gt;-->
+<!--            <button class="button-memory" th:text="${product.productMemory}"/>-->
+        <div class="button">
+            <button class="button-cart" th:href="'/cart'">Add to cart</button>
+            <button class="button-purchase" th:href="'/cart'">Purchase</button>
+        </div>
+    </div>
+
+</div>
+<div>
+    <h2>Detailed Information</h2>
+    <p class = "description" th:text="${product.productDescription}"/>
+</div>
+<div class="specs">
+    <h2>Specifications</h2>
+    <!-- Specifications details here -->
+</div>
+</body>
+</html>
