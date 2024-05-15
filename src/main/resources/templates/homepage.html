@@ -151,7 +151,7 @@
                         </a>
                     </td>
                     <td>
-                        <a th:href="'/product/' + ${product.id}" th:text="${product.productName + ' - ' + product.productPrice}"></a>
+                        <a th:href="'/product/' + ${product.id}" th:text="${product.productName} + ' - ' + ${product.productPrice}"></a>
                     </td>
                     <td>
                         <button type="button">Buy</button>

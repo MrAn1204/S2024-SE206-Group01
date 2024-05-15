@@ -93,21 +93,21 @@ body {
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    height: 100vh; 
+    height: 200vh; 
     width: 100%;
 }
 
 .imgHome {
     width: 70%; 
     height: auto; 
-    transform: translateY(-30%);
+    /* transform: translateY(-30%); */
     max-width: 100%;
 }
 
 .listProduct {
     text-align: center;
     font-size: 30px;
-    margin-top: -120px;
+    margin-top: 60px;
 }
 
 /* filter */

@@ -44,8 +44,8 @@ public class HomeController {
 
     @GetMapping(value = "/product/{id}")
     public String productDetail(@PathVariable(value = "id") Long id, Model model) {
-        Product productDetail = productRepository.getById(id);
-        model.addAttribute("productDetail", productDetail);
+        Product product = productRepository.findById(id).get();
+        model.addAttribute("product", product);
         return "productdetail";
     }
     @RequestMapping(value = "/search")

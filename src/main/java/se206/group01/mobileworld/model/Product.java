@@ -121,6 +121,14 @@ public class Product {
     public void setProductColor(String productColor) {
         this.productColor = productColor;
     }
+    
+    public int getProductMemory() {
+        return productMemory;
+    }
+
+    public void setProductMemory(int productMemory) {
+        this.productMemory = productMemory;
+    }
 
     private String productName;
     private String productImage;
@@ -135,6 +143,7 @@ public class Product {
     private String productCpu;
     private int productAmount;
     private String productColor;
+    private int productMemory;
 }
 
 
