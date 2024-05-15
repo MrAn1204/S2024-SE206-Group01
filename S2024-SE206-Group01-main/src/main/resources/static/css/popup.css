@@ -1,0 +1,56 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 150px;
+    max-width: 800px; 
+    width: 80%; 
+    text-align: center;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    border-radius: 17px;
+    padding: 10px;
+}
+
+.inputContainer i {
+    margin-right: 10px;
+    color: #999494;
+}
+
+.inputContainer input {
+    border: none;
+    outline: none;
+    background-color: #000;
+    color: #999494;
+    flex-grow: 1;
+}
+
+.fa-xmark {
+    position: absolute;
+    top: 250px;
+    right: 560px;
+    font-size: 30px; /* Tăng kích thước của biểu tượng */
+    color: black;
+    cursor: pointer;
+}
+
+
+

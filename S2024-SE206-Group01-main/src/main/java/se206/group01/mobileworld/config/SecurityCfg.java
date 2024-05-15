@@ -1,0 +1,35 @@
+package se206.group01.mobileworld.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+import se206.group01.mobileworld.service.JpaUserDetailsService;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityCfg {
+    @Bean
+    JpaUserDetailsService uds() {
+        return new JpaUserDetailsService();
+    }
+
+    @Bean
+    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+                .csrf(csrf -> csrf.disable())
+                .userDetailsService(uds())
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers("/css/**", "/images/**", "/fonts/**").permitAll()
+                        .requestMatchers("/", "signup").permitAll()
+                        .anyRequest().authenticated())
+                .formLogin(login -> login
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .failureUrl("/login?failed")
+                        .permitAll())
+                .build();
+    }
+}

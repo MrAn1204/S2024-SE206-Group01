@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/popup.css}">
+    <link rel="stylesheet" th:href="@{/css/sort.css}">
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts/fontawesome-free-6.4.2-web/css/all.min.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"
+          type="text/css"/>
+    <!--font-->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap}">
+
+</head>
+
+<body>
+<div class="all">
+    <header class="header">
+        <div class="grid">
+            <nav class="header__navbar">
+                <ul class="header__navbar-list">
+                    <img th:src="@{/images/logo.png}" class="logo" alt="Mobile World">
+                </ul>
+
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item"> Phone</li>
+                    <li class="header__navbar-item"> Tablet</li>
+                    <li class="header__navbar-item"> Laptop</li>
+                    <li class="header__navbar-item"> TV</li>
+                    <li class="header__navbar-item"> Accessories</li>
+                </ul>
+
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item header__navbar-item--has-notify">
+                        <a th:href="@{/login}" class="authentication">
+                            Sign in <span class="slash-space">/</span>
+                        </a>
+                        <a th:href="@{/signup}" class="authentication">
+                            Sign up
+                        </a>
+                    </li>
+                    <li class="header__navbar-item">
+                        <a href="" class="icons">
+                            <a th:href="@{/search}" class="header_navbar-icon-link" id="search-icon-link">
+                                <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
+                            </a>
+
+                            <a th:href="@{/cart}" class="header_navbar-icon-link">
+                                <i class="header_navbar-icon fa-solid fa-cart-arrow-down"></i>
+                            </a>
+
+                            <a th:href="@{/profile}" class="header_navbar-icon-link">
+                                <i class="header_navbar-icon fa-regular fa-user"></i>
+                            </a>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <img th:src="@{/images/pictureHome.png}" class="imgHome" alt="Picture Home">
+    <div class="listProduct">
+        <h4> Shop all latest offers and innovations </h4>
+        <h5> List of productions </h5>
+    </div>
+
+    <div class="filter">
+        <ul class="listFilter">
+            <button class="mid-item1"> All</button>
+            <button class="mid-item1"> Phone</button>
+            <button class="mid-item1"> Tablet</button>
+            <button class="mid-item1"> Laptop</button>
+            <button class="mid-item1"> TV</button>
+        </ul>
+
+        <div class="sort-dropdown">
+            <a ></a>
+            <div class="sort-button" id="sort-button">
+                Sort
+                <img th:src="@{/images/sortIcon.png}" alt="Sort Icon" class="sort-icon" id="sort-icon">
+            </div>
+            <!-- <div class="sort-container">
+                <ul class="sort-list">
+                    <li class="sort-items">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> All </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> Price low to high </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> Price high to low </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> New products </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> Old products </span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+    <div class="border"></div>
+    <img th:src="@{https://thuthuatnhanh.com/wp-content/uploads/2022/04/Anh-meme-hai-cute-580x580.jpg}" class="imgHome1"
+         alt="Picture Home">
+</div>
+
+<!-- Search content -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <a th:href="@{/close}">
+            <i id="close-icon" class="fa-solid fa-xmark"></i>
+        </a>
+
+        <h2>Can we help you with your search?</h2>
+        <div class="inputContainer">
+            <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
+            <input type="text" th:name="searchInput">
+        </div>
+    </div>
+</div>
+
+<div>
+    <div class="listProduct">
+        <table>
+            <tbody>
+            <tr th:each ="product: ${productList}">
+                <td>
+                    <a th:href = "'/product/' + ${product.productId}" th:src = "${product.productImage}" width="100" height="100"></a>
+                </td>
+                <td>
+                    <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productName}"></a>
+                    <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productPrice}"></a>
+                </td>
+                <td>
+                    <button type="button">Buy</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="footer"></footer>
+</div>
+
+</body>
+
+</html>
