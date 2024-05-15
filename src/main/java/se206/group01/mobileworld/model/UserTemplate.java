@@ -4,63 +4,52 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
+public class UserTemplate {
+    @NotBlank(message = "Username must not be empty")
     private String username;
 
+    @NotBlank(message = "First name must not be empty")
     private String fname;
-
+    
+    @NotBlank(message = "Last name must not be empty")
     private String lname;
 
+    @NotBlank(message = "Email must not be empty")
     private String email;
 
+    @NotBlank(message = "Password must not be empty")
     private String password;
 
+    @NotBlank(message = "Confirm password must not be empty")
+    private String confirmPassword;
+
+    @NotBlank(message = "Address must not be empty")
     private String address;
 
+    @NotNull(message = "Date of birth must not be empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 
+    @NotBlank(message = "Phone must not be empty")
     private String phone;
 
-    private String roles = "CUSTOMER";
+    public UserTemplate() {
 
-    public User() {
-        
     }
 
-    public User(UserTemplate userTemplate) {
-        this.username = userTemplate.getUsername();
-        this.password = userTemplate.getPassword();
-        updateFields(userTemplate);
-    }
-
-    public void updateFields(UserTemplate userTemplate) {
-        this.fname = userTemplate.getFname();
-        this.lname = userTemplate.getLname();
-        this.email = userTemplate.getEmail();
-        this.address = userTemplate.getAddress();
-        this.dob = userTemplate.getDob();
-        this.phone = userTemplate.getPhone();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public UserTemplate(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.fname = user.getFname();
+        this.lname = user.getLname();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.address = user.getAddress();
+        this.dob = user.getDob();
+        this.phone = user.getPhone();
     }
 
     public String getUsername() {
@@ -111,14 +100,6 @@ public class User {
         this.phone = phone;
     }
 
-    public String getRoles() {
-        return roles;
-    }
-
-    public void setRoles(String roles) {
-        this.roles = roles;
-    }
-
     public String getFname() {
         return fname;
     }
@@ -133,5 +114,13 @@ public class User {
 
     public void setLname(String lname) {
         this.lname = lname;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

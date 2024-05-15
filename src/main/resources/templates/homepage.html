@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title> Mobile World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/popup.css}">
+    <link rel="stylesheet" th:href="@{/css/sort.css}">
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts/fontawesome-free-6.4.2-web/css/all.min.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"
+          type="text/css"/>
+    <!--font-->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap}">
+
+
+</head>
+
+<body>
+<div class="all">
+    <header class="header">
+        <div class="grid">
+            <nav class="header__navbar">
+                <ul class="header__navbar-list">
+                    <a th:href="@{/}">
+                        <img th:src="@{/images/logo.png}" class="logo" alt="Mobile World">
+                    </a>
+                </ul>
+
+                <ul class="header__navbar-list">
+                    <a th:href="@{/type/phone}" class="header__navbar-item" > Phone</a>
+                    <a th:href="@{/type/tablet}" class="header__navbar-item" > Tablet</a>
+                    <a th:href="@{/type/laptop}" class="header__navbar-item" > Laptop</a>
+                    <a th:href="@{/type/tv}" class="header__navbar-item" > TV</a>
+                    <a th:href="@{/type/accessories}" class="header__navbar-item" > Accessories</a>
+                </ul>
+
+                <ul class="header__navbar-list">
+                    <li class="header__navbar-item header__navbar-item--has-notify">
+                        <a th:href="@{/login}" class="authentication">
+                            Sign in <span class="slash-space">/</span>
+                        </a>
+                        <a th:href="@{/signup}" class="authentication">
+                            Sign up
+                        </a>
+                    </li>
+                    <li class="header__navbar-item">
+                        <a href="" class="icons">
+                            <a th:href="@{/search}" class="header_navbar-icon-link" id="search-icon-link">
+                                <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
+                            </a>
+
+                            <a th:href="@{/cart}" class="header_navbar-icon-link">
+                                <i class="header_navbar-icon fa-solid fa-cart-arrow-down"></i>
+                            </a>
+
+                            <a th:href="@{/profile}" class="header_navbar-icon-link">
+                                <i class="header_navbar-icon fa-regular fa-user"></i>
+                            </a>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<div class="container">
+    <img th:src="@{/images/pictureHome.png}" class="imgHome" alt="Picture Home">
+    <div class="listProduct">
+        <h4> Shop all latest offers and innovations </h4>
+        <h5> List of productions </h5>
+    </div>
+
+    <div class="filter">
+        <ul class="listFilter">
+            <button class="all-button" onclick="location.href = '/';" > All</button>
+            <button class="phone-button" onclick="location.href = '/type/phone';" > Phone</button>
+            <button class="tablet-button" onclick="location.href = '/type/tablet';" > Tablet</button>
+            <button class="laptap-button" onclick="location.href = '/type/laptop';"> Laptop</button>
+            <button class="tv-button" onclick="location.href = '/type/tv';"> TV</button>
+        </ul>
+
+        <div class="sort-dropdown">
+            <a th:href="@{/sort}">
+                <div class="sort-button" id="sort-button">
+                    Sort
+                    <img th:src="@{/images/sortIcon.png}" alt="Sort Icon" class="sort-icon" id="sort-icon">
+                </div>
+            </a>
+
+            <!-- <div class="sort-container">
+                <ul class="sort-list">
+                    <li class="sort-items">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> All </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> Price low to high </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> Price high to low </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> New products </span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="sort-items sort-items-viewed">
+                        <a href="" class="sort-link">
+                            <div class="sort-info">
+                                <span class="sort-name"> Old products </span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+    <div class="border"></div>
+
+    <div>
+        <div class="listProduct">
+            <table>
+                <tr th:each="product : ${productList}">
+                    <td>
+                        <a th:href="'/product/' + ${product.id}">
+                            <img th:src="${product.productImage}" width="100" alt="Product Image">
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="'/product/' + ${product.id}" th:text="${product.productName + ' - ' + product.productPrice}"></a>
+                    </td>
+                    <td>
+                        <button type="button">Buy</button>
+                    </td>
+                </tr>
+            </table>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--<div class="product-list">-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <th>Product Image</th>-->
+<!--            <th>Product Name</th>-->
+<!--            <th>Product Price</th>-->
+<!--        </tr>-->
+<!--        <tr th:each="product : ${products}">-->
+<!--            <td><img th:src="${product.productImage}" /></td>-->
+<!--            <td th:text="${product.productName}"></td>-->
+<!--            <td th:text="${product.productPrice}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</div>-->
+
+
+<footer class="footer"></footer>
+</div>
+
+</body>
+
+</html>

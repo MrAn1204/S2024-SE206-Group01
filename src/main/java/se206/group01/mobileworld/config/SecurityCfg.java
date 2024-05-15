@@ -22,12 +22,11 @@ public class SecurityCfg {
                 .csrf(csrf -> csrf.disable())
                 .userDetailsService(uds())
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/css/**", "/images/**", "/fonts/**").permitAll()
-                        .requestMatchers("/", "signup").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/profile", "/cart").authenticated()
+                        .anyRequest().permitAll())
                 .formLogin(login -> login
                         .loginPage("/login")
-                        .loginProcessingUrl("/login")
+                        .loginProcessingUrl("/login-validate")
                         .failureUrl("/login?failed")
                         .permitAll())
                 .build();

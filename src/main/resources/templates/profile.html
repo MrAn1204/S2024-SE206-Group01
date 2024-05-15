@@ -3,45 +3,20 @@
 <head>
     <meta charset='utf-8'>
     <title>Page Title</title>
-    <link rel='stylesheet' href='../static/css/style.css'>
+    <link rel='stylesheet' type="text/css" th:href='@{/css/style.css}'>
     <script>
         window.onload = function() {
             let editProfileButton = document.getElementById("editProfileButton");
             let deleteAccountButton = document.getElementById("deleteAccountButton");
-            let infoContentElements = document.querySelectorAll(
-                "#userFname, #userLname, #userDob, #userPhone, #userEmail, #userAddress"
-            );
+            
             let deletePopup = document.querySelector(".deletePopup");
             let closePopup = document.querySelectorAll(".closePopup");
-            let isEditing = false;
-            
-            editProfileButton.addEventListener("click", function(event) {
-                if (!isEditing) {
-                    // Change button text to "Save"
-                    editProfileButton.textContent = "Save";
-                    editProfileButton.type = "submit";
-                    // Prevent form submission
-                    event.preventDefault();
-                    // Make info content editable
-                    infoContentElements.forEach(function(element) {
-                        element.disabled = false;
-                        element.classList.add("editable");
-                    });
-                    isEditing = true;
-                } else {
-                    // Change button text back to "Edit profile"
-                    editProfileButton.textContent = "Edit profile";
-                    // Make info content non-editable
-                    infoContentElements.forEach(function(element) {
-                        element.disabled = true;
-                        element.classList.remove("editable");
-                    });
-                    isEditing = false;
-                }
-            });
+
+            editProfileButton.addEventListener("click", function () {
+                window.location.href = "/profile-edit"
+            })
 
             deleteAccountButton.addEventListener("click", function () {
-                console.log("a");
                 deletePopup.classList.add("show");
             });
 
@@ -54,42 +29,50 @@
     </script>
 </head>
 <body class="container">
-    <form id="profileContainer">
+    <div id="profileContainer" th:object="${userTemplate}">
         <p class="formTitle">My account</p>
+        
         <div class="infoLine">
-            <label for="userId" class="infoLabel">ID</label>
-            <input disabled type="text" id="userId" class="infoContent" value="0">
+            <p class="infoLabel">ID</p>
+            <p disabled type="text" id="userId" class="infoContent" th:text="${user.id}">
         </div>
+
         <div class="infoLine">
-            <label for="userFname" class="infoLabel">First name</label>
-            <input disabled type="text" id="userFname" class="infoContent" value="Admin">
+            <p class="infoLabel">First name</p>
+            <p disabled type="text" id="userFname" class="infoContent" th:text="*{fname}">
         </div>
+
         <div class="infoLine">
-            <label for="userLname" class="infoLabel">Last name</label>
-            <input disabled type="text" id="userLname" class="infoContent" value="Randomname">
+            <p class="infoLabel">Last name</p>
+            <p disabled type="text" id="userLname" class="infoContent" th:text="*{lname}">
         </div>
+
         <div class="infoLine">
-            <label for="userDob" class="infoLabel">Date of Birth</label>
-            <input disabled type="text" id="userDob" class="infoContent" value="01/01/2000">
+            <p class="infoLabel">Date of Birth</p>
+            <p disabled type="date" id="userDob" class="infoContent" th:text="*{dob}">
         </div>
+
         <div class="infoLine">
-            <label for="userPhone" class="infoLabel">Phone number</label>
-            <input disabled type="text" id="userPhone" class="infoContent" value="0123456789">
+            <p class="infoLabel">Phone number</p>
+            <p disabled type="text" id="userPhone" class="infoContent" th:text="*{phone}">
         </div>
+
         <div class="infoLine">
-            <label for="userEmail" class="infoLabel">Email</label>
-            <input disabled type="text" id="userEmail" class="infoContent" value="abc@xyz.com">
+            <p class="infoLabel">Email</p>
+            <p disabled type="email" id="userEmail" class="infoContent" th:text="*{email}">
         </div>
+
         <div class="infoLine">
-            <label for="userAddress" class="infoLabel">Address</label>
-            <input disabled type="text" id="userAddress" class="infoContent" value="1234 QWER Street">
+            <p class="infoLabel">Address</p>
+            <p disabled type="text" id="userAddress" class="infoContent" th:text="*{address}">
         </div>
+
         <div id="editProfileContainter">
-            <button type="button" id="editProfileButton">Edit profile</button>
             <button type="button" id="deleteAccountButton">Delete account</button>
-            <a  href="logout"></a>
+            <button type="button" id="editProfileButton">Edit profile</button>
+            <a href="logout"></a>
         </div>
-    </form>
+    </div>
 
     <div class="deletePopup">
         <div class="deletePopupContent">

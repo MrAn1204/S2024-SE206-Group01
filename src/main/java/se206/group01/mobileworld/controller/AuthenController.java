@@ -1,7 +1,6 @@
 package se206.group01.mobileworld.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
 import se206.group01.mobileworld.model.User;
+import se206.group01.mobileworld.model.UserTemplate;
 import se206.group01.mobileworld.repository.UserRepository;
 
 @Controller
@@ -21,49 +21,39 @@ public class AuthenController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        model.addAttribute("user", new User());
-        return "login";
-    }
-
-    @PostMapping("/login")
-    public String loginHandle(Model model, @Valid User user, BindingResult result) {
-        System.out.println(result);
-        if (!result.hasErrors()) {
-            Optional<User> u = userRepository.findByUsername(user.getUsername());
-            if (u.isPresent()) {;
-                if (user.getPassword().equals(u.get().getPassword())) {
-                    model.addAttribute("user", user);
-                    return "index";
-                }
-            }
-        }
-        model.addAttribute("user", user);
+        model.addAttribute("userTemplate", new UserTemplate());
         return "login";
     }
 
     @GetMapping("/signup")
     public String signup(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("userTemplate", new UserTemplate());
         return "signup";
     }
 
     @PostMapping("/signup")
-    public String signupHandle(Model model, @Valid User user, BindingResult result) {
+    public String signupHandle(Model model, @Valid UserTemplate userTemplate, BindingResult result) {
         List<User> users = userRepository.findAll();
-        System.out.println(users);
 
-        for (User u : users) {
-            if (u.getUsername().equals(user.getUsername())) {
-                model.addAttribute("user", user);
+        for (User user : users) {
+            if (user.getUsername().equals(userTemplate.getUsername())) {
+                result.rejectValue("username", "error.userTemplate.username", "Username is already taken");
+                model.addAttribute("userTemplate", userTemplate);
                 return "signup";
             }
         }
 
+        if (!userTemplate.getPassword().equals(userTemplate.getConfirmPassword())) {
+            result.rejectValue("confirmPassword", "error.userTemplate.confirmPassword", "Passwords do not match");
+            model.addAttribute("userTemplate", userTemplate);
+            return "signup";
+        }
+
         if (result.hasErrors()) {
-            model.addAttribute("user", user);
+            model.addAttribute("user", userTemplate);
             return "signup";
         } else {
-            userRepository.save(user);
+            userRepository.save(new User(userTemplate));
             return "login";
         }
     }
