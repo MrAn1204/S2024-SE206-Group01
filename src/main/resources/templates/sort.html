@@ -18,7 +18,6 @@
     <link rel="stylesheet"
           th:href="@{https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap}">
 
-
 </head>
 
 <body>
@@ -33,11 +32,11 @@
                 </ul>
 
                 <ul class="header__navbar-list">
-                    <a th:href="@{/type/phone}" class="header__navbar-item" > Phone</a>
-                    <a th:href="@{/type/tablet}" class="header__navbar-item" > Tablet</a>
-                    <a th:href="@{/type/laptop}" class="header__navbar-item" > Laptop</a>
-                    <a th:href="@{/type/tv}" class="header__navbar-item" > TV</a>
-                    <a th:href="@{/type/accessories}" class="header__navbar-item" > Accessories</a>
+                    <li class="header__navbar-item"> Phone</li>
+                    <li class="header__navbar-item"> Tablet</li>
+                    <li class="header__navbar-item"> Laptop</li>
+                    <li class="header__navbar-item"> TV</li>
+                    <li class="header__navbar-item"> Accessories</li>
                 </ul>
 
                 <ul class="header__navbar-list">
@@ -79,11 +78,11 @@
 
     <div class="filter">
         <ul class="listFilter">
-            <button class="all-button" onclick="location.href = '/';" > All</button>
-            <button class="phone-button" onclick="location.href = '/type/phone';" > Phone</button>
-            <button class="tablet-button" onclick="location.href = '/type/tablet';" > Tablet</button>
-            <button class="laptap-button" onclick="location.href = '/type/laptop';"> Laptop</button>
-            <button class="tv-button" onclick="location.href = '/type/tv';"> TV</button>
+            <button class="mid-item1"> All</button>
+            <button class="mid-item1"> Phone</button>
+            <button class="mid-item1"> Tablet</button>
+            <button class="mid-item1"> Laptop</button>
+            <button class="mid-item1"> TV</button>
         </ul>
 
         <div class="sort-dropdown">
@@ -94,49 +93,49 @@
                 </div>
             </a>
 
-            <!-- <div class="sort-container">
+            <div class="sort-container">
                 <ul class="sort-list">
-                    <li class="sort-items">
+                    <li class="sort-items" th:class="${activeSort == 'all' ? 'active' : ''}">
                         <a href="" class="sort-link">
                             <div class="sort-info">
-                                <span class="sort-name"> All </span>
+                                <span class="sort-name">All</span>
                             </div>
                         </a>
                     </li>
 
-                    <li class="sort-items sort-items-viewed">
+                    <li class="sort-items sort-items-viewed" th:class="${activeSort == 'lowToHigh' ? 'active' : ''}">
                         <a href="" class="sort-link">
                             <div class="sort-info">
-                                <span class="sort-name"> Price low to high </span>
+                                <span class="sort-name">Price low to high</span>
                             </div>
                         </a>
                     </li>
 
-                    <li class="sort-items sort-items-viewed">
+                    <li class="sort-items sort-items-viewed" th:class="${activeSort == 'highToLow' ? 'active' : ''}">
                         <a href="" class="sort-link">
                             <div class="sort-info">
-                                <span class="sort-name"> Price high to low </span>
+                                <span class="sort-name">Price high to low</span>
                             </div>
                         </a>
                     </li>
 
-                    <li class="sort-items sort-items-viewed">
+                    <li class="sort-items sort-items-viewed" th:class="${activeSort == 'newProducts' ? 'active' : ''}">
                         <a href="" class="sort-link">
                             <div class="sort-info">
-                                <span class="sort-name"> New products </span>
+                                <span class="sort-name">New products</span>
                             </div>
                         </a>
                     </li>
 
-                    <li class="sort-items sort-items-viewed">
+                    <li class="sort-items sort-items-viewed" th:class="${activeSort == 'oldProducts' ? 'active' : ''}">
                         <a href="" class="sort-link">
                             <div class="sort-info">
-                                <span class="sort-name"> Old products </span>
+                                <span class="sort-name">Old products</span>
                             </div>
                         </a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
         </div>
     </div>
     <div class="border"></div>
@@ -144,42 +143,25 @@
     <div>
         <div class="listProduct">
             <table>
-                <tr th:each="product : ${productList}">
+
+                <tr th:each ="product: ${productList}">
                     <td>
-                        <a th:href="'/product/' + ${product.id}">
-                            <img th:src="${product.productImage}" width="100" alt="Product Image">
-                        </a>
+                        <a th:href = "'/product/' + ${product.productId}" th:src = "${product.productImage}" width="100" height="100"></a>
                     </td>
                     <td>
-                        <a th:href="'/product/' + ${product.id}" th:text="${product.productName}"></a>
+                        <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productName}"></a>
+                        <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productPrice}"></a>
                     </td>
                     <td>
                         <button type="button">Buy</button>
                     </td>
                 </tr>
+
             </table>
-            
         </div>
     </div>
 </div>
 
-
-
-
-<!--<div class="product-list">-->
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <th>Product Image</th>-->
-<!--            <th>Product Name</th>-->
-<!--            <th>Product Price</th>-->
-<!--        </tr>-->
-<!--        <tr th:each="product : ${products}">-->
-<!--            <td><img th:src="${product.productImage}" /></td>-->
-<!--            <td th:text="${product.productName}"></td>-->
-<!--            <td th:text="${product.productPrice}"></td>-->
-<!--        </tr>-->
-<!--    </table>-->
-<!--</div>-->
 
 
 <footer class="footer"></footer>

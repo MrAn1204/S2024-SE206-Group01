@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title> Mobile World</title>
+  <title>Cart Page</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart Page</title>
-  <link rel="stylesheet" href="../static/css/base.css">
-  <link rel="stylesheet" href="../static/css/home.css">
-  <link rel="stylesheet" href="../static/css/popup.css">
-  <link rel="stylesheet" href="../static/css/sort.css">
-  <link rel="stylesheet" href="../static/css/card.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="stylesheet" href="../static/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
+
+  <link rel="stylesheet" th:href="@{/css/base.css}">
+  <link rel="stylesheet" th:href="@{/css/home.css}">
+  <link rel="stylesheet" th:href="@{/css/popup.css}">
+  <link rel="stylesheet" th:href="@{/css/sort.css}">
+  <link rel="stylesheet" th:href="@{/css/cart.css}">
+
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}">
+  <link rel="stylesheet" th:href="@{/css/fonts/fontawesome-free-6.4.2-web/css/all.min.css}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"
+        type="text/css"/>
   <!--font-->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap">
+  <link rel="stylesheet"
+        th:href="@{https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap}">
 
 </head>
 
@@ -24,9 +27,9 @@
     <header class="header">
       <div class="grid">
         <nav class="header__navbar">
-          <ul class="header__navbar-list">
-            <img src="../static/images/logo.png" class="logo" alt="Mobile World">
-          </ul>
+          <a th:href="@{/}">
+            <img th:src="@{/images/logo.png}" class="logo" alt="Mobile World">
+          </a>
 
           <ul class="header__navbar-list">
             <li class="header__navbar-item"> Phone </li>
@@ -38,24 +41,24 @@
 
           <ul class="header__navbar-list">
             <li class="header__navbar-item header__navbar-item--has-notify">
-              <a href="" class="authentication">
+              <a th:href="@{/login}" class="authentication">
                 Sign in <span class="slash-space">/</span>
               </a>
-              <a href="" class="authentication">
+              <a th:href="@{/signup}" class="authentication">
                 Sign up
               </a>
             </li>
             <li class="header__navbar-item">
               <a href="" class="icons">
-                <a href="" class="header_navbar-icon-link" id="search-icon-link">
+                <a th:href="@{/search}" class="header_navbar-icon-link" id="search-icon-link">
                   <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
                 </a>
 
-                <a href="" class="header_navbar-icon-link">
+                <a th:href="@{/cart}" class="header_navbar-icon-link">
                   <i class="header_navbar-icon fa-solid fa-cart-arrow-down"></i>
                 </a>
 
-                <a href="" class="header_navbar-icon-link">
+                <a th:href="@{/profile}" class="header_navbar-icon-link">
                   <i class="header_navbar-icon fa-regular fa-user"></i>
                 </a>
               </a>
@@ -91,8 +94,11 @@
   <!-- Success Message Start -->
   <div class="success-container">
     <p class="message">Purchase successfully</p>
-    <div class="button-close">Close</div>
-
+    <div class="button-close" >
+      <a th:href="@{/}">
+        <div>Close</div>
+      </a>
+    </div>
   </div>
   <!-- Success Message End -->
 

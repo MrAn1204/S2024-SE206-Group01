@@ -53,19 +53,14 @@ public class HomeController {
         return "search";
     }
 
-    @RequestMapping(value = "/cart")
+    @GetMapping(value = "/cart")
     public String showCart(Model model) {
         return "cart1";
     }
 
-    // @GetMapping(value = "/")
-    // public String homePage() {
-    //     return "homepage";
-    // }
-
     @GetMapping(value = "/close")
     public String closePopUp() {
-        return "homepage";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/sort")
@@ -119,4 +114,3 @@ public class HomeController {
         }
     }
 }
-

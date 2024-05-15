@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title> Mobile World</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Search</title>
     <link rel="stylesheet" th:href="@{/css/base.css}">
     <link rel="stylesheet" th:href="@{/css/home.css}">
     <link rel="stylesheet" th:href="@{/css/popup.css}">
@@ -18,7 +17,6 @@
     <link rel="stylesheet"
           th:href="@{https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap}">
 
-
 </head>
 
 <body>
@@ -27,17 +25,15 @@
         <div class="grid">
             <nav class="header__navbar">
                 <ul class="header__navbar-list">
-                    <a th:href="@{/}">
-                        <img th:src="@{/images/logo.png}" class="logo" alt="Mobile World">
-                    </a>
+                    <img th:src="@{/images/logo.png}" class="logo" alt="Mobile World">
                 </ul>
 
                 <ul class="header__navbar-list">
-                    <a th:href="@{/type/phone}" class="header__navbar-item" > Phone</a>
-                    <a th:href="@{/type/tablet}" class="header__navbar-item" > Tablet</a>
-                    <a th:href="@{/type/laptop}" class="header__navbar-item" > Laptop</a>
-                    <a th:href="@{/type/tv}" class="header__navbar-item" > TV</a>
-                    <a th:href="@{/type/accessories}" class="header__navbar-item" > Accessories</a>
+                    <li class="header__navbar-item"> Phone</li>
+                    <li class="header__navbar-item"> Tablet</li>
+                    <li class="header__navbar-item"> Laptop</li>
+                    <li class="header__navbar-item"> TV</li>
+                    <li class="header__navbar-item"> Accessories</li>
                 </ul>
 
                 <ul class="header__navbar-list">
@@ -79,21 +75,19 @@
 
     <div class="filter">
         <ul class="listFilter">
-            <button class="all-button" onclick="location.href = '/';" > All</button>
-            <button class="phone-button" onclick="location.href = '/type/phone';" > Phone</button>
-            <button class="tablet-button" onclick="location.href = '/type/tablet';" > Tablet</button>
-            <button class="laptap-button" onclick="location.href = '/type/laptop';"> Laptop</button>
-            <button class="tv-button" onclick="location.href = '/type/tv';"> TV</button>
+            <button class="mid-item1"> All</button>
+            <button class="mid-item1"> Phone</button>
+            <button class="mid-item1"> Tablet</button>
+            <button class="mid-item1"> Laptop</button>
+            <button class="mid-item1"> TV</button>
         </ul>
 
         <div class="sort-dropdown">
-            <a th:href="@{/sort}">
-                <div class="sort-button" id="sort-button">
-                    Sort
-                    <img th:src="@{/images/sortIcon.png}" alt="Sort Icon" class="sort-icon" id="sort-icon">
-                </div>
-            </a>
-
+            <a ></a>
+            <div class="sort-button" id="sort-button">
+                Sort
+                <img th:src="@{/images/sortIcon.png}" alt="Sort Icon" class="sort-icon" id="sort-icon">
+            </div>
             <!-- <div class="sort-container">
                 <ul class="sort-list">
                     <li class="sort-items">
@@ -140,47 +134,45 @@
         </div>
     </div>
     <div class="border"></div>
+    <img th:src="@{https://thuthuatnhanh.com/wp-content/uploads/2022/04/Anh-meme-hai-cute-580x580.jpg}" class="imgHome1"
+         alt="Picture Home">
+</div>
 
-    <div>
-        <div class="listProduct">
-            <table>
-                <tr th:each="product : ${productList}">
-                    <td>
-                        <a th:href="'/product/' + ${product.id}">
-                            <img th:src="${product.productImage}" width="100" alt="Product Image">
-                        </a>
-                    </td>
-                    <td>
-                        <a th:href="'/product/' + ${product.id}" th:text="${product.productName}"></a>
-                    </td>
-                    <td>
-                        <button type="button">Buy</button>
-                    </td>
-                </tr>
-            </table>
-            
+<!-- Search content -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <a th:href="@{/close}">
+            <i id="close-icon" class="fa-solid fa-xmark"></i>
+        </a>
+
+        <h2>Can we help you with your search?</h2>
+        <div class="inputContainer">
+            <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
+            <input type="text" th:name="searchInput">
         </div>
     </div>
 </div>
 
-
-
-
-<!--<div class="product-list">-->
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <th>Product Image</th>-->
-<!--            <th>Product Name</th>-->
-<!--            <th>Product Price</th>-->
-<!--        </tr>-->
-<!--        <tr th:each="product : ${products}">-->
-<!--            <td><img th:src="${product.productImage}" /></td>-->
-<!--            <td th:text="${product.productName}"></td>-->
-<!--            <td th:text="${product.productPrice}"></td>-->
-<!--        </tr>-->
-<!--    </table>-->
-<!--</div>-->
-
+<div>
+    <div class="listProduct">
+        <table>
+            <tbody>
+            <tr th:each ="product: ${productList}">
+                <td>
+                    <a th:href = "'/product/' + ${product.productId}" th:src = "${product.productImage}" width="100" height="100"></a>
+                </td>
+                <td>
+                    <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productName}"></a>
+                    <a th:href = "'/product/' + ${product.productId}" th:text = "${product.productPrice}"></a>
+                </td>
+                <td>
+                    <button type="button">Buy</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 <footer class="footer"></footer>
 </div>

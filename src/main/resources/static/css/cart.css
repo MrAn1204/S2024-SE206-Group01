@@ -1,0 +1,471 @@
+/* Progress Bar */
+.stepper-wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .stepper-item {
+    font-size: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+  }
+  
+  .stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+  }
+  
+  .stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+  }
+  
+  .stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+  }
+  
+  .stepper-item.active {
+    font-weight: bold;
+  }
+  
+  .stepper-item.completed .step-counter {
+    background-color: #FF8000;
+  }
+  
+  .stepper-item.completed::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #FF8000;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+  }
+  
+  .stepper-item:first-child::before {
+    content: none;
+  }
+  .stepper-item:last-child::after {
+    content: none;
+  }
+
+  /* Line */
+  .card-brief {
+    font-size: 3rem;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Items List */
+  .items-list {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .item {
+    padding: 20px 30px;
+    height: 200px;
+    display: flex;
+    border-bottom:  1px solid #E1E8EE;
+  }
+  
+  .image {
+    margin-right: 50px;
+  }
+
+  .image img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .description {
+    padding-top: 10px;
+    margin-right: 60px;
+    width: 300px;
+  }
+
+  .procduct-name {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .description span {
+    display: block;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .price-action {
+    margin-left: auto;
+    order: 3;
+    padding-top: 10px;
+    margin-right: 0;
+    width: 300px;
+  }
+
+  .price-action span {
+    display: block;
+    text-align: right;
+    color: #43484D;
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 7px;
+  }
+  
+  .quantity {
+    padding-top: 5px;
+  }
+  .quantity input {
+    -webkit-appearance: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    text-align: center !important;
+    width: 32px !important;
+    font-size: 16px !important;
+    color: #404345 !important;
+    font-weight: 300 !important;
+  }
+  
+  button[class*=btn] {
+    width: 30px;
+    height: 30px;
+    background-color: #E1E8EE;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+  .minus-btn img {
+    margin-bottom: 3px;
+  }
+  .plus-btn img {
+    margin-top: 2px;
+  }
+  button:focus,
+  input:focus {
+    outline:0;
+  }
+  .remove-button {
+        background-color: #f44336;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border: 2px solid #f44336;
+        border-radius: 5px;
+        transition-duration: 0.4s;
+        float: right;
+  }
+
+  .remove-button:hover {
+    background-color: white;
+    color: #f44336;
+  }
+
+  .confirm-button {
+    background-color: #FF8000;
+    border: none;
+    color: black;
+    padding: 12px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 10px 25px;
+    cursor: pointer;
+    border: 2px solid #FF8000;
+    border-radius: 5px;
+    transition-duration: 0.4s;
+    float: right;
+}
+
+.confirm-button:hover {
+background-color: white;
+color: #FF8000;
+}
+
+.modal-btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .modal-btn:hover {
+    opacity:1;
+  }
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn, .deletebtn {
+    float: left;
+    width: 50%;
+  }
+  
+  /* Add a color to the cancel button */
+  .cancelbtn {
+    background-color: #ccc;
+    color: black;
+  }
+  
+  /* Add a color to the delete button */
+  .deletebtn {
+    background-color: #f44336;
+  }
+  
+  /* Add padding and center-align text to the container */
+  .container {
+    display: block;
+    padding-top: 20px;
+    margin-top: 0;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 99; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: none; /* Enable scroll if needed */
+    background-color: #0000007b;
+    padding-top: 50px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+    height: 350px;
+  }
+   
+  /* The Modal Close Button (x) */
+  .close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #f44336;
+    cursor: pointer;
+  }
+  
+  /* Clear floats */
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+
+
+
+
+
+
+
+
+  /* CART 2 PAGE CSS */
+
+  .quantity-disabled {
+    font-size: 2rem;
+    text-align: center;
+    width: 30%;
+    padding: 5px;
+    background-color: #ccc;
+    border-radius: 5px;
+  }
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .ship-info label {
+    font-size: 1.75rem;
+  }
+
+  .delivery-time {
+    font-size: 1.75rem;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /* CART 3 PAGE CSS */
+  .paymet-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+  }
+
+  .bank {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 55%;
+  }
+
+  .qrcode {
+    text-align: center;
+    width: 35%;
+    height: 400px;
+    background-color: black;
+  }
+
+  .qr {
+    display: block;
+    height: 320px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .qr-text {
+    display: block;
+    font-size: 3rem;
+    color: white;
+    margin-top: 15px;
+  }
+
+  .bank-full {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ccc;
+    width: 100%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+  }
+
+  .break {
+    flex-basis: 100%;
+    height: 0;
+  }
+
+  .bank-half {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ccc;
+    width: 45%;
+    padding: 10px 25px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+  }
+
+  .bank-logo {
+    height: 50px;
+    padding: auto;
+  }
+
+  .bank-number {
+    display: inline-block;
+    font-size: 2rem;
+  }
+
+
+
+  /* CART 4 PAGE CSS */
+
+.success-container {
+  margin: 45px auto;
+  text-align: center;
+  width: 60%;
+  height: 250px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.message {
+  display: block;
+  padding-top: 55px;
+  color: white;
+  font-size: 3rem;
+}
+
+.button-close {
+  display: block;
+  background-color: #ccc;
+  color: black;
+  padding: 12px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  margin: 10px 25px;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+}
+
+.button-close:hover {
+background-color: black;
+color: #ccc;
+}

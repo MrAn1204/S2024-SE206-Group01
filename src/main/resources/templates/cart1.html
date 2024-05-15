@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title> Mobile World</title>
+    <title>Cart Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart Page</title>
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/home.css">
-    <link rel="stylesheet" href="../static/css/popup.css">
-    <link rel="stylesheet" href="../static/css/sort.css">
-    <link rel="stylesheet" href="../static/css/card.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="../static/fonts/fontawesome-free-6.4.2-web/css/all.min.css">
-    <!--font-->  
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap">
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/popup.css}">
+    <link rel="stylesheet" th:href="@{/css/sort.css}">
+    <link rel="stylesheet" th:href="@{/css/cart.css}">
+
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css}">
+    <link rel="stylesheet" th:href="@{/css/fonts/fontawesome-free-6.4.2-web/css/all.min.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet"
+          type="text/css"/>
+    <!--font-->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500&family=Roboto:wght@300;400;500&display=swap}">
 
 </head>
 
@@ -24,9 +28,11 @@
             <div class="grid">
                 <nav class="header__navbar">
                     <ul class="header__navbar-list">
-                        <img src="../static/images/logo.png" class="logo" alt="Mobile World">
+                        <a th:href="@{/}">
+                            <img th:src="@{/images/logo.png}" class="logo" alt="Mobile World">
+                        </a>
                     </ul>
-    
+
                     <ul class="header__navbar-list">
                         <li class="header__navbar-item"> Phone </li>
                         <li class="header__navbar-item"> Tablet </li>
@@ -34,35 +40,34 @@
                         <li class="header__navbar-item"> TV </li>
                         <li class="header__navbar-item"> Accessories </li>
                     </ul>
-    
+
                     <ul class="header__navbar-list">
-                        <li class="header__navbar-item header__navbar-item--has-notify"> 
-                            <a href="" class="authentication"> 
-                                Sign in <span class="slash-space">/</span>  
+                        <li class="header__navbar-item header__navbar-item--has-notify">
+                            <a th:href="@{/login}" class="authentication">
+                                Sign in <span class="slash-space">/</span>
                             </a>
-                            <a href="" class="authentication">
+                            <a th:href="@{/signup}" class="authentication">
                                 Sign up
                             </a>
                         </li>
-                        <li class="header__navbar-item"> 
-                            <a href="" class="icons"> 
-                                <a href="" class="header_navbar-icon-link" id="search-icon-link" >
-                                    <i class="header_navbar-icon fa-solid fa-magnifying-glass" ></i>
-                                </a>
-                                     
-                                <a href="" class="header_navbar-icon-link"> 
-                                    <i class="header_navbar-icon fa-solid fa-cart-arrow-down"></i> 
+                        <li class="header__navbar-item">
+                            <a href="" class="icons">
+                                <a th:href="@{/search}" class="header_navbar-icon-link" id="search-icon-link">
+                                    <i class="header_navbar-icon fa-solid fa-magnifying-glass"></i>
                                 </a>
 
-                                <a href="" class="header_navbar-icon-link">
+                                <a th:href="@{/cart}" class="header_navbar-icon-link">
+                                    <i class="header_navbar-icon fa-solid fa-cart-arrow-down"></i>
+                                </a>
+
+                                <a th:href="@{/profile}" class="header_navbar-icon-link">
                                     <i class="header_navbar-icon fa-regular fa-user"></i>
                                 </a>
-                            </a> 
+                            </a>
                         </li>
                     </ul>
                 </nav>
             </div>
-        </div>
         </header>
         <!-- Header End -->
 
@@ -88,105 +93,37 @@
         <!-- Progress Bar End -->
 
         <!-- Shopping Amount Line Begin -->
-        <div class="card-brief">Your Shopping Card (2 Products) </div>
+        <div class="card-brief">Your Shopping Card (<span th:text="${productCount}">2</span> Products)</div>
         <!-- Shopping Amount Line End -->
-        
+
         <!-- Items List Begin -->
         <div class="items-list">
             <div class="item">
                 <div class="buttons">
-                  <span class="delete-btn"></span>
-                  <span class="like-btn"></span>
+                    <span class="delete-btn"></span>
+                    <span class="like-btn"></span>
                 </div>
-             
-                <div class="image">
-                  <img src="../static/images/iphone-15.webp" alt="" />
-                </div>
-             
-                <div class="description">
-                  <span style="font-size: 3rem;">Iphone 15 Pro Max</span>
-                  <span>6/256GB Black</span>
-                  <div>
-                    <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                          <img src="../static/images/plus.svg" alt="" />
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn" type="button" name="button">
-                          <img src="../static/images/minus.svg" alt="" />
-                        </button>
-                      </div>
-                    </div>
-                </div>
-             
-                <div class="price-action">
-                    <span style="font-size: 2rem; color: red;">30.000.000 đ</span>
-                    <span style="color:cornflowerblue;">-3.000.000 đ</span>
-                    <span>Discounted</span>
-                    <div class="remove-button" onclick="document.getElementById('id01').style.display='block'">Remove</div>
-                </div>
-            </div>
 
-            <div class="item">
-                <div class="buttons">
-                  <span class="delete-btn"></span>
-                  <span class="like-btn"></span>
-                </div>
-             
                 <div class="image">
-                  <img src="../static/images/iphone-15.webp" alt="" />
+                    <img th:src="@{/images/iphone-15.webp}" alt="" />
                 </div>
-             
-                <div class="description">
-                  <span style="font-size: 3rem;">Iphone 15 Pro Max</span>
-                  <span>6/256GB Black</span>
-                  <div>
-                    <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                          <img src="../static/images/plus.svg" alt="" />
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn" type="button" name="button">
-                          <img src="../static/images/minus.svg" alt="" />
-                        </button>
-                      </div>
-                    </div>
-                </div>
-             
-                <div class="price-action">
-                    <span style="font-size: 2rem; color: red;">30.000.000 đ</span>
-                    <span style="color:cornflowerblue;">-3.000.000 đ</span>
-                    <span>Discounted</span>
-                    <div class="remove-button" onclick="document.getElementById('id01').style.display='block'">Remove</div>
-                </div>
-            </div>
 
-            <div class="item">
-                <div class="buttons">
-                  <span class="delete-btn"></span>
-                  <span class="like-btn"></span>
-                </div>
-             
-                <div class="image">
-                  <img src="../static/images/iphone-15.webp" alt="" />
-                </div>
-             
                 <div class="description">
-                  <span style="font-size: 3rem;">Iphone 15 Pro Max</span>
-                  <span>6/256GB Black</span>
-                  <div>
-                    <div class="quantity">
-                        <button class="plus-btn" type="button" name="button">
-                          <img src="../static/images/plus.svg" alt="" />
-                        </button>
-                        <input type="text" name="name" value="1">
-                        <button class="minus-btn" type="button" name="button">
-                          <img src="../static/images/minus.svg" alt="" />
-                        </button>
-                      </div>
+                    <span style="font-size: 3rem;">Iphone 15 Pro Max</span>
+                    <span>6/256GB Black</span>
+                    <div>
+                        <div class="quantity">
+                            <button class="plus-btn" type="button" name="button">
+                                <img th:src="@{/images/plus.svg}" alt="" />
+                            </button>
+                            <input type="text" name="name" th:value="1" />
+                            <button class="minus-btn" type="button" name="button">
+                                <img th:src="@{/images/minus.svg}" alt="" />
+                            </button>
+                        </div>
                     </div>
                 </div>
-             
+
                 <div class="price-action">
                     <span style="font-size: 2rem; color: red;">30.000.000 đ</span>
                     <span style="color:cornflowerblue;">-3.000.000 đ</span>
@@ -199,7 +136,9 @@
 
         <!-- Confirm Button Start -->
         <div class="items-list">
-            <a href="cart2.html"><div class="confirm-button" onclick="window.location.href = 'card2.html';">Confirm</div></a>
+            <a th:href="@{/shipment}">
+                <div class="confirm-button">Confirm</div>
+            </a>
         </div>
         <!-- Confirm Button End -->
 
@@ -210,7 +149,7 @@
               <div class="container">
                 <h1 style="font-size: 5rem;">Delete Product</h1>
                 <p style="font-size: 3rem;">Are you sure you want to delete your product?</p>
-              
+
                 <div class="clearfix">
                   <div onclick="document.getElementById('id01').style.display='none'" class="modal-btn cancelbtn">Cancel</div>
                   <div onclick="document.getElementById('id01').style.display='none'" class="modal-btn deletebtn">Delete</div>

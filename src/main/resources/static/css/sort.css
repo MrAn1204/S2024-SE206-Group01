@@ -62,6 +62,11 @@
 
 .sort-info {
     margin-left: 12px;
+    display: flex;
+    align-items: center;
+}
+.sort-info::after {
+    content: none !important;
 }
 
 .sort-name {
@@ -79,3 +84,11 @@
 .sort-container.show-container {
     display: block;
   }
+
+.sort-link .sort-name {
+  text-decoration: none; /* Tắt dấu gạch chân */
+}
+
+.sort-link .sort-info::after {
+  content: none; /* Tắt dấu chấm */
+}
