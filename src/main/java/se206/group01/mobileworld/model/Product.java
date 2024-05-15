@@ -2,13 +2,20 @@ package se206.group01.mobileworld.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "product")
 public class Product {
-    public Long getProductId() {
-        return productId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    public Long id;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -44,22 +51,12 @@ public class Product {
     }
 
     public String getProductDescription() {
-        return ProductDescription;
+        return productDescription;
     }
 
     public void setProductDescription(String productDescription) {
-        ProductDescription = productDescription;
+        this.productDescription = productDescription;
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long productId;
-    private String productName;
-    private String productImage;
-    private double productPrice;
-    private String productBrand;
-    private String ProductDescription;
 
     public String getProductType() {
         return productType;
@@ -69,7 +66,45 @@ public class Product {
         this.productType = productType;
     }
 
-    private String productType;
+    public String getProductScreen() {
+        return productScreen;
+    }
+
+    public void setProductScreen(String productScreen) {
+        this.productScreen = productScreen;
+    }
+
+    public String getProductOs() {
+        return productOs;
+    }
+
+    public void setProductOs(String productOs) {
+        this.productOs = productOs;
+    }
+
+    public String getProductRearCamera() {
+        return productRearCamera;
+    }
+
+    public void setProductRearCamera(String productRearCamera) {
+        this.productRearCamera = productRearCamera;
+    }
+
+    public String getProductFrontCamera() {
+        return productFrontCamera;
+    }
+
+    public void setProductFrontCamera(String productFrontCamera) {
+        this.productFrontCamera = productFrontCamera;
+    }
+
+    public String getProductCpu() {
+        return productCpu;
+    }
+
+    public void setProductCpu(String productCpu) {
+        this.productCpu = productCpu;
+    }
 
     public int getProductAmount() {
         return productAmount;
@@ -79,6 +114,27 @@ public class Product {
         this.productAmount = productAmount;
     }
 
-    private int productAmount;
+    public String getProductColor() {
+        return productColor;
+    }
+
+    public void setProductColor(String productColor) {
+        this.productColor = productColor;
+    }
+
+    public String productName;
+    public String productImage;
+    public double productPrice;
+    public String productBrand;
+    public String productDescription;
+    public String productType;
+    public String productScreen;
+    public String productOs;
+    public String productRearCamera;
+    public String productFrontCamera;
+    public String productCpu;
+    public int productAmount;
+    public String productColor;
 }
+
 
